@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div data-ng-repeat="row in jobs">
+            <div class="col-lg-3 col-md-4" style="border: 1px solid #c3c3c3;padding: 10px;height:400px">
+                <div class="job_list">
+                    <div class="job_detail">
+                        <div class="job_category">{{ row.category }}</div>
+                        <div class="job_title">
+                            <a href="/jobs/{{ row.urlAlias }}">
+                                {{ row.jobTitle }}
+                            </a>
+                        </div>
+
+                        <div class="det_job_sum" style="font-size: 14px;">Posted By: 
+                            <span><a href="/company/{{ row.companyId }}" target="_blank">{{ row.companyName }}</a></span>
+                        </div>
+
+                        <p>{{ row.jobDetail | limitTo: 150 }}{{row.jobDetail.length < 150 ? '' : '...'}}
+                             <a href="/jobs/{{ row.urlAlias }}">more</a>
+                        </p>
+                        <div class="det_job_sum" style="font-size: 14px;">End Client: <span>{{ row.endClient }}</span></div>
+
+                        <div class="det_job_sum" style="font-size: 14px;">Experience Level: <span>0-1 Year</span></div>
+                    </div>
+
+                    <div class="referral">Referral Bonus: $100</div>
+
+                    <div class="job_subdetail">
+                        <ul>
+                            <li><div class="location"><span>Concord, New Hampshire</span></div></li>
+                            <li><div class="time">Updated {{ row.updatedAt | date:'M/d/yyyy' }}</div></li>
+                        </ul>
+                    </div>
+                    <div class="apply_btns jb_pst">
+                        <a href="/job-apply/{{ row.jobId }}">Apply <span>yourself</span></a>
+                        <a href="/job-refer/{{ row.jobId }}">Refer <span>someone</span></a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
